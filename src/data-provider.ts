@@ -27,6 +27,7 @@ import type { DatabaseSync as NodeDatabase } from 'node:sqlite';
 import type { SqlClient, SqlClientFactory, SqlResult } from './client';
 import type { SQLiteOptions } from './detect-sqlite';
 import detectSqlite from './detect-sqlite';
+import type { RefineSQLMeta } from './types';
 import {
   createCrudFilters,
   createCrudSorting,
@@ -73,6 +74,11 @@ export default function (
     updateMany,
     deleteOne,
     deleteMany,
+    getApiUrl() {
+      // SQL databases don't have a traditional API URL
+      // Return a placeholder or configuration-based value
+      return '';
+    },
   } as DataProvider;
 
   async function resolveClient() {
